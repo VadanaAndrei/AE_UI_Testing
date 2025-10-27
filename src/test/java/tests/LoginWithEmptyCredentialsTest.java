@@ -22,6 +22,5 @@ public class LoginWithEmptyCredentialsTest extends BaseTest{
         accountSidebarAssertions
                 .verifySignInErrorMessage("Email or mobile number is required.")
                 .assertAll();
-
     }
 }
