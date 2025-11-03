@@ -51,6 +51,7 @@ public class WebDriverFactory {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--window-size=" + Configuration.run().browserWidth() + "," + Configuration.run().browserHeight());
+        options.addArguments("--headless=new");
 
         System.out.println("Chrome driver initialized"); // TODO: Change with log4j logger
         return new ChromeDriver(options);
