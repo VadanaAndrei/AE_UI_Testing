@@ -53,6 +53,12 @@ public class WebDriverFactory {
         options.addArguments("--window-size=" + Configuration.run().browserWidth() + "," + Configuration.run().browserHeight());
         options.addArguments("--headless=new");
 
+        options.addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36");
+
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+
         System.out.println("Chrome driver initialized"); // TODO: Change with log4j logger
         return new ChromeDriver(options);
     }

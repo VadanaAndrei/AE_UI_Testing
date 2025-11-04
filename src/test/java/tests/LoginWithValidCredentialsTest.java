@@ -21,7 +21,7 @@ public class LoginWithValidCredentialsTest extends BaseTest {
                 .clickSignInButton();
 
         accountSidebarAssertions
-                .verifySuccessfulSignIn("My Account Wrong3")
+                .verifySuccessfulSignIn("My Account")
                 .assertAll();
     }
 }

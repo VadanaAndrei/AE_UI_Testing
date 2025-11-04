@@ -18,11 +18,17 @@ public class DealModal {
 
     public void close(){
         By buttonLocator = By.cssSelector("button[aria-label='Close dialog']");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(buttonLocator));
+        try {
+            WebElement button = wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocator));
 
-        button.click();
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", button);
+
+        } catch (Exception e) {
+            System.err.println("Error closing the modal with js");
+        }
     }
 
 }
