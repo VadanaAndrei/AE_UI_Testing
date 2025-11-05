@@ -7,3 +7,5 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasses({LoginWithEmptyCredentialsTest.class, LoginWithValidCredentialsTest.class})
 public class LoginTestsSuite {
 }
+
+
