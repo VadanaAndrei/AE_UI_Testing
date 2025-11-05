@@ -7,6 +7,10 @@ pipeline {
         allure 'allure2.35.1'
     }
 
+    triggers {
+            cron('0 12 * * *')
+        }
+
     stages {
         stage('Checkout') {
             steps {
@@ -22,13 +26,30 @@ pipeline {
     }
 
     post {
-        always {
-            junit 'target/surefire-reports/*.xml'
+            always {
+                junit 'target/surefire-reports/*.xml'
 
-            allure includeProperties: false,
-                   jdk: '',
-                   report: 'allure-report',
-                   results: [[path: 'target/allure-results']]
+                allure includeProperties: false,
+                       jdk: '',
+                       report: 'allure-report',
+                       results: [[path: 'target/allure-results']]
+            }
+
+            success {
+                emailext (
+                    subject: "SUCCES: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: "Build Success",
+                    to: "avadana@griddynamics.com"
+                )
+            }
+
+            failure {
+                emailext (
+                    subject: "EȘEC: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: "Build Failed",
+                    to: "avadana@griddynamics.com"
+                )
+            }
         }
     }
 }
