@@ -37,7 +37,7 @@ pipeline {
 
         success {
             emailext (
-                subject: "SUCCES: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                subject: "SUCCESS: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Build Success",
                 to: "avadana@griddynamics.com"
             )
@@ -45,7 +45,7 @@ pipeline {
 
         failure {
             emailext (
-                subject: "EȘEC: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                subject: "FAIL: Build ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: "Build Failed",
                 to: "avadana@griddynamics.com"
             )
